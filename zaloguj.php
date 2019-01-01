@@ -3,8 +3,12 @@
 	//uzywamy funkcji require_once by tylko raz wykonac czynnosc logowania i ze stopowaniem gdy mamy blad 
 	
 	
-	$polaczenie = new mysqli($host,$db_user,$db_password,$db_name);
-	//tworzymy zmienna-obiekt poprzez new bedaca polaczeniem, uzywamy nowej, wspieranej funkcji/konstruktora mysqli kltora laczy baze $host...
+	$polaczenie = @new mysqli($host,$db_user,$db_password,$db_name);
+	//tworzymy zmienna-obiekt poprzez new bedaca polaczeniem, uzywamy nowej, wspieranej funkcji/konstruktora mysqli kltora laczy baze $host...	
+	//$polaczenie = @new mysqli($host,$db_user,$db_password,$db_name);
+	//aby nie bylo wypisywania bledow trzeba dac @ przed new
+	//tak bedzie wypisanie bledow  $polaczenie = @new mysqli($host,$db_user,$db_password,$db_name);
+	
 	
 	if ($polaczenie->connect_errno!=0) //nalezy sprawdzic czy jest polaczenie, jak nie ma to, przejmujemy obsluge bledu
 	//jak jest polaczenie to connect_errno jest 0
